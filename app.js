@@ -16,6 +16,12 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(express.static("public"));
 const otherPath = path.join(__dirname,'public/js');
 app.use(express.static(otherPath));
+const mainPath = path.join(__dirname,'public/');
+app.use(express.static(mainPath));
+var dir = mainPath+'uploaded_images'
+if (!fs.existsSync(dir)){
+    fs.mkdirSync(dir);
+}
 const folderPath = path.join(__dirname,'public/uploaded_images');
 app.use(express.static(folderPath));
 
